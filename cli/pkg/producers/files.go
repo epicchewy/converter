@@ -38,11 +38,11 @@ func IsValidTargetExt(ext string) bool {
 }
 
 type FileProducerOpts struct {
-	SourceFile     string   `short:"sf" long:"source-file" description:"Source file to convert" env:"SOURCE_FILE"`
-	SourceDir      string   `short:"sd" long:"source-dir" description:"Source directory to convert" env:"SOURCE_DIR"`
-	TargetDir      string   `short:"td" long:"target-dir" description:"Target directory to save converted files" env:"TARGET_DIR"`
-	SourceFileExts []string `short:"sfe" long:"source-file-exts" description:"Source file extensions to convert" env:"SOURCE_FILE_EXTS"`
-	TargetFileExts []string `short:"tfe" long:"target-file-exts" description:"Target file extensions to save" env:"TARGET_FILE_EXTS"`
+	SourceFile     string   `long:"source-file" description:"Source file to convert" env:"SOURCE_FILE"`
+	SourceDir      string   `long:"source-dir" description:"Source directory to convert" env:"SOURCE_DIR"`
+	TargetDir      string   `long:"target-dir" description:"Target directory to save converted files" env:"TARGET_DIR"`
+	SourceFileExts []string `long:"source-file-exts" description:"Source file extensions to convert" env:"SOURCE_FILE_EXTS"`
+	TargetFileExts []string `long:"target-file-exts" description:"Target file extensions to save" env:"TARGET_FILE_EXTS"`
 }
 
 func (opts *FileProducerOpts) Validate() error {

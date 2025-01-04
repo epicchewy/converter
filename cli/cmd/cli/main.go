@@ -18,7 +18,7 @@ var (
 		LoggerOptions       logger.Opts                `group:"Logger Options"`
 		WorkerOptions       parallel.Opts              `group:"Worker Options"`
 		FileProducerOptions producers.FileProducerOpts `group:"File Producer Options"`
-		QueueSize           int                        `group:"Queue Size" default:"10000" description:"The size of the queue" long:"queue-size" short:"qs"`
+		QueueSize           int                        `group:"Queue Size" default:"10000" description:"The size of the queue" long:"queue-size"`
 	}
 )
 
@@ -67,11 +67,3 @@ func main() {
 
 	os.Exit(0)
 }
-
-// workflow
-// - validate cli inputs
-// - create new producer (file)
-// - each job creates a new queue
-// - each job creates a new executor (file)
-// - each job creates a new worker (file)
-// - each job creates a new queue
