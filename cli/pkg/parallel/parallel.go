@@ -18,6 +18,7 @@ type Producer interface {
 
 type ResultHandler interface {
 	Handle(ctx context.Context, i interface{}, err error)
+	GetResults() map[string]interface{}
 }
 
 type ParallelRunner struct {
@@ -55,6 +56,10 @@ func (r *ParallelRunner) Run(ctx context.Context) error {
 			w.Stop()
 		}
 		wg.Wait()
+
+		// print results
+		result := r.resultHandler.GetResults()
+		logger.Infow("Job Results", "result", result)
 	}()
 
 	if err := r.producer.Produce(ctx, r.queue); err != nil {

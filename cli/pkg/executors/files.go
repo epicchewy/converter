@@ -80,3 +80,11 @@ func (h *FileResultHandler) Handle(ctx context.Context, i interface{}, err error
 		h.successCount.Add(1)
 	}
 }
+
+func (h *FileResultHandler) GetResults() map[string]interface{} {
+	return map[string]interface{}{
+		"successCount": h.successCount.Load(),
+		"failureCount": h.failureCount.Load(),
+		"isSuccess":    h.failureCount.Load() == 0,
+	}
+}
